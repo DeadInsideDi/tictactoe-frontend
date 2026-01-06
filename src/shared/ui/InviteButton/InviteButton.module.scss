@@ -1,0 +1,48 @@
+.button {
+	padding: 0.375rem 0.75rem;
+	border-radius: 0.25rem;
+
+	&.active {
+		border: 1px solid var(--border-primary);
+
+		@include hover {
+			background-color: var(--bg-primary-hover);
+		}
+		&:active {
+			background-color: var(--bg-primary-active);
+		}
+	}
+
+	&.inactive {
+		background-color: var(--btn-bg-disabled);
+		color: var(--text-disabled);
+	}
+
+	&.pending {
+		background-color: var(--primary-color);
+	}
+
+	&.accepted {
+		background-color: var(--positive-color);
+	}
+
+	&.denied {
+		background-color: var(--negative-color);
+	}
+
+	&.pending,
+	&.accepted,
+	&.denied {
+		color: var(--text-on-accent);
+	}
+
+	&:disabled {
+		pointer-events: none;
+		cursor: default;
+	}
+	&:focus-visible {
+		border-color: var(--primary-color);
+	}
+
+	@include unselectable;
+}

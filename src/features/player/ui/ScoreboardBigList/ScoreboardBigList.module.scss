@@ -1,0 +1,19 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	animation: appear 0.2s ease;
+}
+
+.item {
+	> :last-child {
+		color: var(--light-yellow);
+	}
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+}

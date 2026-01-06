@@ -1,0 +1,52 @@
+.container {
+	@include unselectable;
+	> * {
+		display: grid;
+		grid-template-columns: repeat(7, 2.75rem);
+		grid-auto-rows: 2.75rem;
+
+		> * {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+
+.weekdays > * {
+	color: var(--text-secondary);
+	border-bottom: 1px solid var(--border-secondary);
+}
+
+.days {
+	margin-block: 1rem;
+
+	> button {
+		border-radius: 0.25rem;
+
+		@include hover {
+			background-color: var(--bg-primary-hover);
+		}
+		&:active {
+			background-color: var(--bg-primary-active);
+		}
+
+		&.active {
+			background-color: var(--primary-color);
+			color: var(--text-on-accent);
+			pointer-events: none;
+			cursor: default;
+		}
+
+		&.muted {
+			color: var(--text-secondary);
+		}
+
+		&:disabled {
+			background-color: transparent;
+			color: var(--text-disabled);
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+	}
+}

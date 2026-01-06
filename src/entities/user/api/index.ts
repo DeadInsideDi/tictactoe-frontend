@@ -1,0 +1,7 @@
+export { changeUserEmail } from './changeUserEmail'
+export { changeUserName } from './changeUserName'
+export { changeUserPassword } from './changeUserPassword'
+export { removeFriend } from './removeFriend'
+export { useMeQuery } from './useMe.query'
+export { userQueries } from './user.queries'
+export { useUserQuery } from './useUser.query'

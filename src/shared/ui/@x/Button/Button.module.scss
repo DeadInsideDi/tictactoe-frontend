@@ -1,0 +1,54 @@
+.button {
+	font-size: 0.875rem; // Body1
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+
+	height: 3.25rem;
+	border-radius: 0.25rem;
+
+	@include hover {
+		background-color: var(--bg-primary-hover);
+	}
+	&:active {
+		background-color: var(--bg-primary-active);
+	}
+
+	&.variant {
+		&-outlined {
+			border: 1px solid var(--border-secondary);
+		}
+
+		&-primary {
+			background-color: var(--primary-color);
+			color: var(--text-on-accent);
+			@include hover {
+				background-color: var(--primary-color-hover);
+			}
+			&:active {
+				background-color: var(--primary-color-active);
+			}
+		}
+
+		&-danger {
+			background-color: var(--negative-color);
+			color: var(--text-on-accent);
+			@include hover {
+				background-color: var(--negative-color-hover);
+			}
+			&:active {
+				background-color: var(--negative-color-active);
+			}
+		}
+	}
+
+	&:disabled {
+		background-color: var(--btn-bg-disabled);
+		color: var(--btn-text-disabled);
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
+	@include unselectable;
+}

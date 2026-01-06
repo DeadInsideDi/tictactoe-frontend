@@ -1,0 +1,11 @@
+.game {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 1fr auto 1fr;
+	justify-items: center;
+
+	> :first-child {
+		margin-bottom: 3rem;
+		align-self: end;
+	}
+}

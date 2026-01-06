@@ -1,0 +1,39 @@
+.bar {
+	margin-top: -0.25rem;
+	width: 100%;
+	min-height: 4rem;
+
+	display: flex;
+	align-items: center;
+
+	animation: appear 0.2s ease;
+	@include unselectable;
+
+	> svg {
+		transition: transform 0.15s ease-out;
+		margin-right: 0.875rem;
+	}
+
+	@include hover {
+		> svg {
+			transform: translateX(0.5rem);
+		}
+	}
+
+	&:active {
+		> svg {
+			transform: none;
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+	}
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(-1rem);
+	}
+}

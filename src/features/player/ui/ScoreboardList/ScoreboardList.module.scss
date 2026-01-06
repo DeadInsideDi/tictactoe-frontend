@@ -1,0 +1,20 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+
+	background-color: var(--bg-secondary);
+	border-radius: 0.25rem;
+	padding: 0.875rem;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+
+	> :last-child {
+		margin-left: auto;
+		color: var(--light-yellow);
+	}
+}

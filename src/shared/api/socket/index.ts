@@ -1,0 +1,16 @@
+import { SOCKET_URL } from '@/shared/config'
+import { type Socket, io } from 'socket.io-client'
+import type { ClientToServerEvents, ServerToClientEvents } from './model'
+
+export const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+	SOCKET_URL,
+	{
+		autoConnect: false,
+		transports: ['websocket'],
+		reconnection: true,
+		reconnectionAttempts: 5,
+		reconnectionDelay: 1000,
+	},
+)
+
+export * from './hooks'

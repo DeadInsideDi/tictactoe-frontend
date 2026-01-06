@@ -1,0 +1,26 @@
+.status {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+
+	@include unselectable;
+}
+
+.ellipse {
+	width: 0.375rem;
+	height: 0.375rem;
+	border-radius: 50%;
+	background-color: var(--bg-primary);
+
+	&.OFFLINE {
+		background-color: var(--fill-dot-offline);
+	}
+
+	&.ONLINE {
+		background-color: var(--fill-dot-online);
+	}
+
+	&.IS_PLAYING {
+		background-color: var(--fill-dot-playing);
+	}
+}

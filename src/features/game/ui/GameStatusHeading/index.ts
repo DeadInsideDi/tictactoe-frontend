@@ -1,0 +1,1 @@
+export { GameStatusHeading } from './GameStatusHeading'

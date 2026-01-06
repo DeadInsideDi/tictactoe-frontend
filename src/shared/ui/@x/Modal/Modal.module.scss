@@ -1,0 +1,39 @@
+.overlay {
+	position: absolute;
+	inset: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&[hidden] {
+		display: none;
+	}
+
+	&::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		background-color: rgb(from var(--black) r g b / 0.5);
+	}
+}
+
+.modal {
+	min-width: 15rem;
+
+	background-color: var(--modal-bg);
+	border-radius: 0.75rem;
+
+	display: flex;
+	flex-direction: column;
+	z-index: 100;
+
+	animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+}

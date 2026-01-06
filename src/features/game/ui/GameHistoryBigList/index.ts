@@ -1,0 +1,1 @@
+export { GameHistoryBigList } from './GameHistoryBigList'

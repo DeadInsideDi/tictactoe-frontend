@@ -1,0 +1,1 @@
+export { GameHistoryPage } from './GameHistoryPage'

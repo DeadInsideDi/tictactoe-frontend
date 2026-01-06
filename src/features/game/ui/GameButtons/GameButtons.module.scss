@@ -1,0 +1,17 @@
+.buttons {
+	position: absolute;
+	inset: auto 0 0 0;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	animation: appear 0.2s ease;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+}

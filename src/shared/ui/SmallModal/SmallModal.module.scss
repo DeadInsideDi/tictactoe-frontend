@@ -1,0 +1,40 @@
+.modal {
+	transition: transform 0.2s ease;
+	animation: popIn 0.2s ease;
+
+	max-width: 15rem;
+	padding: 1.5rem;
+	gap: 1rem;
+
+	&:has(button:active) {
+		transform: scale(0.95);
+	}
+}
+
+@keyframes popIn {
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+}
+
+.buttons {
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: end;
+	gap: 1.5rem;
+	color: var(--primary-color);
+
+	> * {
+		border-radius: 0.25rem;
+	}
+
+	@include hover {
+		color: var(--primary-color-hover);
+	}
+	&:active {
+		color: var(--primary-color-active);
+	}
+
+	@include unselectable;
+}

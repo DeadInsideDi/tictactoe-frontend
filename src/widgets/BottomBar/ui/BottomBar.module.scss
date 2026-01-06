@@ -1,0 +1,46 @@
+.bar {
+	width: 100%;
+	min-height: 4rem;
+	padding-inline: 2rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: var(--bar-bg);
+	border-radius: 0.75rem;
+}
+
+.btn {
+	width: 1.5rem;
+	height: 1.5rem;
+
+	> svg {
+		transition: inherit;
+
+		width: 100%;
+		height: 100%;
+		color: var(--bar-fill-icon);
+
+		@include hover {
+			transform: scale(1.1);
+		}
+		&:active {
+			transform: scale(0.9);
+			color: var(--bar-fill-icon-active);
+		}
+	}
+
+	&:focus-visible {
+		outline: none;
+		> svg {
+			transform: scale(0.9);
+			color: var(--bar-fill-icon-active);
+		}
+	}
+
+	&.btnActive > svg {
+		transform: scale(1);
+		color: var(--bar-fill-icon-active);
+	}
+}

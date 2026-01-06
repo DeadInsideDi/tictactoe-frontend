@@ -1,0 +1,43 @@
+.board {
+	width: min(100%, 50vh);
+	aspect-ratio: 1;
+
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.cell {
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid var(--border-secondary);
+
+	&:disabled {
+		cursor: default;
+		border-color: transparent;
+		background-color: var(--bg-secondary);
+	}
+
+	&.X {
+		border-color: var(--primary-color);
+		background-color: rgb(from var(--primary-color) r g b / 0.2);
+	}
+	&.O {
+		border-color: var(--negative-color);
+		background-color: rgb(from var(--negative-color) r g b / 0.2);
+	}
+
+	> svg {
+		animation: appear 0.3s ease;
+	}
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+}

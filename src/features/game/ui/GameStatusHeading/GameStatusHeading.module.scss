@@ -1,0 +1,26 @@
+.status {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	animation: appear 0.3s ease-out;
+
+	> :last-child {
+		color: var(--text-secondary);
+	}
+
+	> .WON {
+		color: var(--primary-color);
+	}
+
+	> .LOST {
+		color: var(--negative-color);
+	}
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(-3rem);
+	}
+}

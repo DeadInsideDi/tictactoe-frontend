@@ -1,0 +1,52 @@
+.widget {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	outline: none;
+
+	> .title {
+		align-self: flex-start;
+		display: flex;
+		align-items: center;
+		@include unselectable;
+
+		> svg {
+			transition: all 0.2s ease;
+			color: var(--text-secondary);
+			opacity: 0;
+			scale: 0.8;
+			transform: translateX(1rem);
+
+			animation: floating 1s ease-in-out infinite;
+			animation-play-state: paused;
+		}
+	}
+
+	@mixin arrow-appearance {
+		opacity: 1;
+		scale: 0.8;
+		transform: translateX(1rem);
+	}
+
+	@include hover {
+		cursor: pointer;
+
+		> .title > svg {
+			@include arrow-appearance;
+		}
+	}
+
+	&:active,
+	&:focus-visible {
+		> .title > svg {
+			@include arrow-appearance;
+			animation-play-state: running;
+		}
+	}
+}
+
+@keyframes floating {
+	50% {
+		transform: translateX(0.25rem);
+	}
+}

@@ -1,0 +1,28 @@
+// mixins are imported globally from vite.config.ts
+
+@mixin desktop() {
+	@media (pointer: fine) and (hover: hover) {
+		@content;
+	}
+}
+
+@mixin hover {
+	@include desktop {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+@mixin mobile() {
+	@media (pointer: coarse) and (hover: none) {
+		@content;
+	}
+}
+
+@mixin unselectable {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

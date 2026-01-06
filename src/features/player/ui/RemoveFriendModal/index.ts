@@ -1,0 +1,1 @@
+export { RemoveFriendModal } from './RemoveFriendModal'

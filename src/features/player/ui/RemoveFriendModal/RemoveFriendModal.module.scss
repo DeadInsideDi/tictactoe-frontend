@@ -1,0 +1,43 @@
+body:has(.modal) {
+	overflow: hidden;
+}
+
+.modal {
+	position: absolute;
+	inset: auto 0 0 0;
+	animation: fadeIn 0.2s ease-out;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: -1.5rem;
+		background-color: var(--bg-primary);
+		border-radius: 2.5rem 2.5rem 0 0;
+		z-index: -1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+}
+
+.heading {
+	margin-top: 1.625rem;
+	text-align: center;
+}
+
+.status {
+	align-self: center;
+	margin-top: 0.5rem;
+}
+
+.score {
+	margin-top: 2.25rem;
+}
+
+.button {
+	margin-top: 4.5rem;
+}

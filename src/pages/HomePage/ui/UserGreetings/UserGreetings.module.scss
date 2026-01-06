@@ -1,0 +1,29 @@
+.greetings {
+	margin-top: 26px;
+
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	> :first-child {
+		animation: appear-right 0.2s ease-out;
+		@include unselectable;
+	}
+	> :last-child {
+		animation: appear-left 0.2s ease-out;
+	}
+}
+
+@keyframes appear-left {
+	from {
+		opacity: 0;
+		transform: translateX(2rem);
+	}
+}
+
+@keyframes appear-right {
+	from {
+		opacity: 0;
+		transform: translateX(-2rem);
+	}
+}

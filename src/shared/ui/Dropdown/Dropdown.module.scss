@@ -1,0 +1,116 @@
+.dropdown {
+	position: relative;
+	z-index: 1;
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.25rem;
+	padding-inline: 1rem 0.625rem;
+
+	border: 1px solid var(--border-secondary);
+	border-radius: 0.625rem;
+	&[aria-expanded='true'] {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	> svg {
+		transition: all 0.2s ease;
+		&.rotate {
+			transform: rotate(-180deg);
+		}
+	}
+}
+
+.menu {
+	transform-origin: top;
+	transition: all 0.15s ease;
+
+	max-height: 20vh;
+	position: absolute;
+	inset-inline: 0;
+
+	border: 1px solid var(--border-secondary);
+	border-bottom-left-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+	border-top: none;
+
+	display: flex;
+	flex-direction: column;
+
+	overflow: hidden auto;
+	z-index: -1;
+
+	&[hidden] {
+		transform: scale(0);
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+@supports selector(::-webkit-scrollbar) {
+	.menu {
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			background-color: var(--bg-primary);
+			border-left: 1px solid var(--border-secondary);
+			border-bottom-right-radius: 0.5rem;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--bg-secondary-hover);
+			border-left: 1px solid var(--border-secondary);
+			border-bottom-right-radius: 0.5rem;
+
+			&:hover {
+				background-color: var(--bg-secondary-active);
+			}
+		}
+	}
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	.menu {
+		scrollbar-width: none;
+	}
+}
+
+.option {
+	flex-shrink: 0;
+	text-align: center;
+	align-content: center;
+	border-bottom: inherit;
+
+	outline: none !important;
+	&:focus {
+		background-color: var(--bg-primary-hover);
+	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.trigger,
+.option {
+	width: 100%;
+	height: 2.75rem;
+	background-color: var(--bg-primary);
+
+	@include hover {
+		background-color: var(--bg-primary-hover);
+	}
+	&:active {
+		background-color: var(--bg-primary-active);
+	}
+	&:disabled {
+		background-color: var(--bg-secondary);
+		color: var(--text-secondary);
+		cursor: not-allowed;
+	}
+
+	@include unselectable;
+}

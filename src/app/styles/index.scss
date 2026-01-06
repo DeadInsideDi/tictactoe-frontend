@@ -1,0 +1,217 @@
+@use './reset.scss';
+@use '../../shared/fonts/index.css';
+
+@mixin light-theme {
+	--primary-color: var(--light-blue);
+	--positive-color: var(--light-green);
+	--negative-color: var(--light-red);
+	--neutral-color: var(--grey);
+
+	--bg-primary: var(--white);
+	--bg-secondary: var(--lighter-grey);
+
+	--text-primary: var(--black);
+	--text-secondary: var(--neutral-color);
+	--text-disabled: var(--dark-grey);
+	--text-on-accent: var(--white);
+
+	--fill-dot: var(--grey);
+	--fill-dot-active: var(--primary-color);
+	--fill-dot-online: var(--positive-color);
+	--fill-dot-playing: var(--negative-color);
+	--fill-dot-offline: var(--light-grey);
+
+	--border-primary: var(--black);
+	--border-secondary: var(--light-grey);
+	--border-active: var(--light-blue);
+
+	--modal-bg: var(--white);
+
+	--bar-bg: var(--light-blue);
+	--bar-fill-icon: var(--blue);
+	--bar-fill-icon-active: var(--white);
+
+	--score-split-color: var(--light-grey);
+
+	--btn-bg-disabled: var(--light-grey); // same as --score-split-color
+	--btn-text-disabled: var(--grey);
+
+	--progress-bg: var(--light-grey);
+	--progress-fill: var(--primary-color);
+
+	--logo-color: var(--darkest-blue);
+	--invert-primary-color: var(--blue);
+	--invert-negative-color: var(--red);
+}
+
+@mixin dark-theme {
+	--primary-color: var(--blue);
+	--positive-color: var(--green);
+	--negative-color: var(--red);
+	--neutral-color: var(--dark-grey);
+
+	--bg-primary: var(--darkest-blue);
+	--bg-secondary: var(--darker-blue);
+
+	--text-primary: var(--light-grey);
+	--text-secondary: var(--neutral-color);
+	--text-disabled: var(--darkest-grey);
+	--text-on-accent: var(--light-grey);
+
+	--fill-dot: var(--light-grey);
+	--fill-dot-active: var(--primary-color);
+	--fill-dot-online: var(--positive-color);
+	--fill-dot-playing: var(--negative-color);
+	--fill-dot-offline: var(--dark-grey);
+
+	--border-primary: var(--light-grey);
+	--border-secondary: var(--dark-blue);
+	--border-active: var(--darker-blue);
+
+	--modal-bg: var(--darker-blue);
+
+	--bar-bg: var(--dark-blue);
+	--bar-fill-icon: var(--darkest-blue);
+	--bar-fill-icon-active: var(--grey);
+
+	--score-split-color: var(--darker-grey);
+
+	--btn-bg-disabled: var(--darker-grey);
+	--btn-text-disabled: var(--darkest-grey);
+
+	--progress-bg: var(--grey);
+	--progress-fill: var(--primary-color);
+
+	--logo-color: var(--lighter-grey);
+	--invert-primary-color: var(--light-blue);
+	--invert-negative-color: var(--light-red);
+}
+
+@mixin color-mix-variants {
+	--bg-primary-hover: color-mix(
+		in srgb,
+		var(--bg-primary) 90%,
+		var(--text-primary)
+	);
+	--bg-primary-active: color-mix(
+		in srgb,
+		var(--bg-primary) 85%,
+		var(--text-primary)
+	);
+
+	--bg-secondary-hover: color-mix(
+		in srgb,
+		var(--bg-secondary) 90%,
+		var(--text-primary)
+	);
+	--bg-secondary-active: color-mix(
+		in srgb,
+		var(--bg-secondary) 85%,
+		var(--text-primary)
+	);
+
+	--primary-color-hover: color-mix(
+		in srgb,
+		var(--primary-color) 90%,
+		var(--text-primary)
+	);
+	--primary-color-active: color-mix(
+		in srgb,
+		var(--primary-color) 85%,
+		var(--text-primary)
+	);
+
+	--negative-color-hover: color-mix(
+		in srgb,
+		var(--negative-color) 90%,
+		var(--text-primary)
+	);
+	--negative-color-active: color-mix(
+		in srgb,
+		var(--negative-color) 85%,
+		var(--text-primary)
+	);
+}
+
+:root {
+	--white: #fff;
+	--lighter-grey: #f1f1f1;
+	--light-grey: #e3e3e3;
+	--grey: #adadad;
+	--dark-grey: #808080;
+	--darker-grey: #575757;
+	--darkest-grey: #282828;
+	--black: #000;
+
+	--light-yellow: #ffb048;
+
+	--light-blue: #46a3ff;
+	--blue: #225577;
+	--dark-blue: #212835;
+	--darker-blue: #12161f;
+	--darkest-blue: #0c1017;
+
+	--light-green: #00c096;
+	--green: #00a682;
+
+	--light-red: #ff827e;
+	--red: #e45651;
+
+	@include light-theme;
+	@include color-mix-variants;
+}
+
+// + Dev theme state managment
+:root[data-theme='dark'] {
+	@include dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root[data-theme='system'] {
+		@include dark-theme;
+	}
+}
+
+html {
+	padding: 1.5rem;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
+}
+
+#root {
+	position: relative;
+	height: 100%;
+	max-width: 50rem;
+	margin-inline: auto;
+}
+
+// Outline
+
+a,
+button {
+	transition: all 0.15s;
+
+	&:focus-visible {
+		transition: outline 0s;
+		outline: 1px solid var(--border-active);
+	}
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+}
+
+input {
+	outline: none;
+}
