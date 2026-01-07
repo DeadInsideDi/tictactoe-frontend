@@ -3,7 +3,7 @@ import {
 	axiosInstance,
 	type CustomAxiosRequestConfig,
 } from '@/shared/api/baseApi'
-import { socket } from '@/shared/api/socket'
+import { socket, useOnSocketError } from '@/shared/api/socket'
 import {
 	useEffect,
 	useLayoutEffect,
@@ -97,6 +97,21 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	}, [])
 
 	// Web Socket
+
+	useOnSocketError(error => {
+		console.log('socket error', error)
+	})
+
+	useEffect(() => {
+		const connectError = (msg: Error) => {
+			console.log('connect error', msg)
+		}
+		socket.on('connect_error', connectError)
+
+		return () => {
+			socket.off('connect_error', connectError)
+		}
+	}, [])
 
 	useEffect(() => {
 		if (token) {
