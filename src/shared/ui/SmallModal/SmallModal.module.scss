@@ -27,13 +27,13 @@
 
 	> * {
 		border-radius: 0.25rem;
-	}
 
-	@include hover {
-		color: var(--primary-color-hover);
-	}
-	&:active {
-		color: var(--primary-color-active);
+		@include hover {
+			color: var(--primary-color-hover);
+		}
+		&:active {
+			color: var(--primary-color-active);
+		}
 	}
 
 	@include unselectable;
