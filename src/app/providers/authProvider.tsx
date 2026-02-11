@@ -1,4 +1,4 @@
-import { refreshAuth } from '@/entities/auth'
+import { refreshAuth, isRefreshRequestConfig } from '@/entities/auth'
 import {
 	axiosInstance,
 	type CustomAxiosRequestConfig,
@@ -75,12 +75,12 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 				if (error.response.status === 401) {
 					try {
-						// if (isRefreshRequestConfig(originalRequest)) {
-						// 	// If refresh request is failed, it means that the token is expired
-						// 	actions.setIsAuthenticated(false)
-						// 	setToken(null)
-						// 	return
-						// }
+						if (isRefreshRequestConfig(originalRequest)) {
+							// If refresh request is failed, it means that the token is expired
+							actions.setIsAuthenticated(false)
+							setToken(null)
+							return
+						}
 						const response = await refreshAuth()
 
 						originalRequest.headers.Authorization = `Bearer ${response.accessToken}`
