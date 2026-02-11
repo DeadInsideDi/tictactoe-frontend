@@ -1,9 +1,10 @@
-import { useMainActions, useUserId } from '@/app/store/mainStore'
+import { useMainActions, useMainStore, useUserId } from '@/app/store/mainStore'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router'
 
 export const useProcessAuthCallback = () => {
 	const userId = useUserId()
+	const isAuthenticated = useMainStore(state => state.isAuthenticated)
 	const actions = useMainActions()
 
 	const [searchParams] = useSearchParams()
@@ -17,9 +18,9 @@ export const useProcessAuthCallback = () => {
 		searchParams.delete('token')
 		searchParams.delete('id')
 
-		if (id === userId) return
+		if (id === userId && isAuthenticated) return
 
 		actions.setUserId(id)
 		actions.setTokenForProvider(token)
-	}, [searchParams, actions])
+	}, [searchParams, userId, isAuthenticated, actions])
 }
