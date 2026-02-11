@@ -75,6 +75,7 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 				if (error.response.status === 401) {
 					try {
+						console.log('try request', originalRequest)
 						if (originalRequest._retry) {
 							// If the request is retried, it means that the token is expired
 							return actions.setIsAuthenticated(false)
