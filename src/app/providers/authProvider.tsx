@@ -75,6 +75,10 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 				if (error.response.status === 401) {
 					try {
+						if (originalRequest._retry) {
+							// If the request is retried, it means that the token is expired
+							return actions.setIsAuthenticated(false)
+						}
 						const response = await refreshAuth()
 
 						originalRequest.headers.Authorization = `Bearer ${response.accessToken}`
