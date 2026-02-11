@@ -11,7 +11,6 @@ import {
 	type FC,
 	type PropsWithChildren,
 } from 'react'
-import { isRefreshRequestConfig } from '../../entities/auth/api/refresh'
 import {
 	useIsAuthenticated,
 	useMainActions,
@@ -76,12 +75,12 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 				if (error.response.status === 401) {
 					try {
-						if (isRefreshRequestConfig(originalRequest)) {
-							// If refresh request is failed: it means that the token is expired
-							actions.setIsAuthenticated(false)
-							setToken(null)
-							return
-						}
+						// if (isRefreshRequestConfig(originalRequest)) {
+						// 	// If refresh request is failed, it means that the token is expired
+						// 	actions.setIsAuthenticated(false)
+						// 	setToken(null)
+						// 	return
+						// }
 						const response = await refreshAuth()
 
 						originalRequest.headers.Authorization = `Bearer ${response.accessToken}`
