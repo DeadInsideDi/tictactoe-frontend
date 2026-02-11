@@ -77,7 +77,7 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 				if (error.response.status === 401) {
 					try {
 						if (isRefreshRequestConfig(originalRequest)) {
-							// If refresh request is failed, it means that the token is expired
+							// If refresh request is failed: it means that the token is expired
 							return actions.setIsAuthenticated(false)
 						}
 						const response = await refreshAuth()

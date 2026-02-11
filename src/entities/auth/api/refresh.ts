@@ -8,7 +8,6 @@ export const refreshAuth = async () => {
 	const response = await axiosInstance.post<AuthResponseDto>('/auth/refresh')
 	return response.data
 }
-
 export const isRefreshRequestConfig = (
 	config: CustomAxiosRequestConfig,
 ): boolean => {
